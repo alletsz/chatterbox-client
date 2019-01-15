@@ -17,7 +17,13 @@ var App = {
     App.fetch(App.stopSpinner);
 
     App.$refresher.on('click', function() {
-      alert('CLICKED');
+      MessagesView.clearMessages();
+      App.startSpinner();
+      App.fetch(App.stopSpinner);
+    });
+
+    RoomsView.$select.change(function() {
+      App.changeRoom(this.value);
     });
   },
 
@@ -31,6 +37,14 @@ var App = {
       }
       callback();
     });
+  },
+
+  changeRoom: function(roomName) {
+    MessagesView.clearMessages();
+    MessagesView.filter = roomName.toLowerCase();
+
+    App.startSpinner();
+    App.fetch(App.stopSpinner);
   },
 
   startSpinner: function() {
