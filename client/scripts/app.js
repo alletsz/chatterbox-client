@@ -1,6 +1,7 @@
 var App = {
 
   $spinner: $('.spinner img'),
+  $refresher: $('#refresh'),
 
   username: 'anonymous',
 
@@ -15,6 +16,9 @@ var App = {
     App.startSpinner();
     App.fetch(App.stopSpinner);
 
+    App.$refresher.on('click', function() {
+      alert('CLICKED');
+    });
   },
 
   fetch: function(callback = ()=>{}) {
