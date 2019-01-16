@@ -1,10 +1,12 @@
 var MessagesView = {
 
   $chats: $('#chats'),
-  filter: null, // roomName
+  // filter: null, // roomName
 
   initialize: function() {
+    window.filter = null;
   },
+
 
   clearMessages: function() {
     MessagesView.$chats.empty();
@@ -14,10 +16,10 @@ var MessagesView = {
     if (!msg.username || !msg.text || !msg.roomname) {
       return;
     }
-    if (MessagesView.filter === null) {
-      MessagesView.filter = msg.roomname.toLowerCase();
+    if (window.filter === null) {
+      window.filter = msg.roomname.toLowerCase();
     }
-    if (MessagesView.filter !== msg.roomname.toLowerCase()) {
+    if (window.filter !== msg.roomname.toLowerCase()) {
       return;
     }
     MessagesView.$chats.append(MessageView.render(msg));

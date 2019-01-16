@@ -1,10 +1,16 @@
 var RoomsView = {
 
-  $button: $('#rooms button'),
+  $button: $('#add-room'),
   $select: $('#rooms select'),
+  
   roomNames: [],
 
   initialize: function() {
+    RoomsView.$button.on('click', function() {
+      // RoomsView.renderRoom(this.val()); // new room name
+      var insertRoomName = prompt('Please enter roomname');
+      RoomsView.renderRoom(insertRoomName);
+    });
   },
   
   addRoomName: function(roomName) {

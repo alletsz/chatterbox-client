@@ -9,8 +9,12 @@ var App = {
     App.username = window.location.search.substr(10);
 
     FormView.initialize();
+    FormView.setUser(App.username);
+
     RoomsView.initialize();
     MessagesView.initialize();
+
+    Friends.initialize();
 
     // Fetch initial batch of messages
     App.startSpinner();
@@ -41,7 +45,7 @@ var App = {
 
   changeRoom: function(roomName) {
     MessagesView.clearMessages();
-    MessagesView.filter = roomName.toLowerCase();
+    window.filter = roomName.toLowerCase();
 
     App.startSpinner();
     App.fetch(App.stopSpinner);
